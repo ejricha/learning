@@ -1,0 +1,19 @@
+Quiz:
+1. protected inheritance allows public and protected base class members to be used in derived classes, but not outside the class hierarchy.
+2. If you pass (by value) an object of the derived class to a function that takes a parameter of the base class, it is sliced. The members that correspond to the derived class are not copied. These should be passed instead by a pointer (const B* b) or constant reference (const B& b).
+3. Favor composition over private inheritance, as it allows you to declare multiple items of the same type if necessary.
+4. The "using" keyword allows a derived class to know about a base class's member function that would have otherwise been hidden due to overloading.
+5. No, once inheritance hierarchy goes private it can never be made public.
+
+Exercises:
+1. Mammal, Bird, Reptile, Platypus (order that base classes are specified in, then this derived class).
+2. Inheritance hierarchy
+class Shape { ... };
+class Polygon : public Shape { ... };
+class Triangle : public Polygon { ... };
+3. Inheritance hierarchy:
+class Base { ... };
+class D1 : private Base { ... };
+class D2 : public D1 { ... };
+4. If no access-specifier is give, C++ defaults to private inheritance, the same way that the default member access is private. (C++ structs use public inheritance and member access by default).
+5. You shouldn't pass objects by value, but instead by pointer to const or const reference. This may be sliced if a derived object is passed to the function.

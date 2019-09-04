@@ -1,0 +1,12 @@
+Quiz:
+1. myNumbers has length 5, so the indexes of the first and last elements are 0 and 4.
+2. No, do not use C-style strings for user input because you have to know the size ahead of time. If you overrun, you are writing memory that does not belong to the char[];
+3. '\0' is viewed as 1 character by the compiler.
+4. The string keeps going until the next '\0' terminator, or the program crashes.
+5. vector<char> dynArray(3) = {'a', 'b', 'c'};
+
+Exercises:
+1. enum Piece { Empty, Pawn, Bishop, Knight, Rook, King, Queen };
+   Piece chessBoard[8][8];
+2. array myNumbers has size 5, so index 4 is the last one that can be accessed.
+3. array myNumbers was not initialized, so myNumbers[3] is a random value, and could be non-printable.

@@ -1,0 +1,25 @@
+Quiz:
+1. On the heap (the free store).
+2. No, sizeof() will report the same size, because int* is a pointer (constant size).
+3. Only class member functions can access private class members.
+4. Yes, one class member method can invoke another.
+5. A constructor is good for initializing data members and resources.
+6. A destructor is good for releasing resources and deallocating memory.
+
+Exercises:
+1. "Class Human" should be "class Human", since C++ is case-sensitive. It also needs to end with a semicolon.
+2. "int age;" is inaccessible outside the class, since it is a private member variable;
+3. Better version of the class:
+class Human {
+ public:
+  Human() : name("Bob"), age(20) { }
+  Human(string n, int a) : name(n), age(a) { }
+
+ private:
+  int age;
+  string name;
+};
+4. See ex04.cpp:
+$ ./ex04.bin
+Circle with radius 10 has circumference 62.8319
+Circle with radius 20 has circumference 125.664

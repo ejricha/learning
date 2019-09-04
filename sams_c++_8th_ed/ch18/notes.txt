@@ -1,0 +1,63 @@
+Quiz:
+1. No, there is no loss in performance inserting elements anywhere in a list, so long as you have an iterator to that location already.
+2. No, iterators are not invalidated by insertion into a list.
+3. Use the .clear() method to clear the contents of a list. You could also use l.erase(l.begin(), l.end()).
+4. Yes, you can insert multiple elements at a time into a list: l.insert(l.begin(), 5, 'x') will insert 5 copies of the char 'x' into the list.
+
+Exercises:
+1. Add elements to the front of a list and forward_list (forward_list has no reverse iterators):
+$ ./ex01.bin 
+Input 5 integers: 5 6 7 8 9
+Elements in list: 9 8 7 6 5
+Elements in forward_list: 9 8 7 6 5
+2. Show that iterators remain valid after insertions:
+$ ./ex02.bin 
+integers:
+ [0] = 1
+ [1] = 2
+ [2] = 3
+ [3] = 4
+ [4] = 5
+integers[2] = 3
+Inserting a 6 before the 3:
+integers:
+ [0] = 1
+ [1] = 2
+ [2] = 6
+ [3] = 3
+ [4] = 4
+ [5] = 5
+integers[3] = 3
+Inserting 7 at front and 10 at back:
+ [0] = 7
+ [1] = 1
+ [2] = 2
+ [3] = 6
+ [4] = 3
+ [5] = 4
+ [6] = 5
+ [7] = 10
+integers[4] = 3
+3. Insert a vector into a list:
+$ ./ex03.bin 
+integers:
+ [0] = 1
+ [1] = 2
+ [2] = 3
+ [3] = 4
+ [4] = 5
+Inserting a vector of 3 99s before the 3:
+integers:
+ [0] = 1
+ [1] = 2
+ [2] = 99
+ [3] = 99
+ [4] = 99
+ [5] = 3
+ [6] = 4
+ [7] = 5
+4. Sort and reverse a list of strings:
+$ ./ex04.bin 
+List (normal): the man on the moon is watching me
+List (sorted): is man me moon on the the watching
+List (reversed): me watching is moon the on man the

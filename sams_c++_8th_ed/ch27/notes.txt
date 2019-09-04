@@ -1,0 +1,10 @@
+Quiz:
+1. If you only need to write to a file, use ofstream fout("filename").
+2. Get a complete line from the input stream with getline(cin, s).
+3. No, to write strings to file, open in text mode, which is the default.
+4. Use is_open() to check that the file is actually open.
+
+Exercises:
+1. Need a check to ensure that myFile.is_open() before writing to it.
+2. myFile is opened as an input file, ifstream doesn't support operator<<(). It should instead be:
+ofstream myFile("SomeFile.txt");

@@ -1,0 +1,10 @@
+Quiz:
+1. std::exception is the base class of a lot of exception types such as bad_alloc and bad_cast, and probably ios_base::failure as well.
+2. When an allocation using new fails, bad_alloc is thrown.
+3. No, all allocations should be done in try {} blocks, not in catch {} blocks (exception handlers).
+4. catch (exception& e) will catch any error derived from base class exception.
+
+Exercises:
+1. Destructors should never throw, since they will automatically be called during stack unwinding.
+2. The delete[] should only be done if the new[] succeeded; it needs to be wrapped in a try/catch statement.
+3. There is another allocation being performed in the exception handler.

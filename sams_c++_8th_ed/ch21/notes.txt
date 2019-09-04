@@ -1,0 +1,43 @@
+Quiz:
+1. A unary function that returns bool is a unary predicate.
+2. A function that returns void can be used to display data. For example:
+template <typename T>
+void display(const T& elem) {
+  cout << ' ' << elem;
+}
+3. A function object is a function that can be used like an object. All entities that exist during the runtime of a program are objects. A functor is a struct (or a class) that can be made to work like a function.
+
+Exercises:
+1. A unary function that can be used with std::for_each() to display the double of the input parameter:
+// Unary function
+template <typename T>
+void doubleThis(const T& t) {
+  cout << t * 2 << endl;
+}
+$ ./ex01.bin 
+Double of literal 3 is 6
+Double of literal 3.33 is 6.66
+Double of int 7 is 14
+Double of double 2134.33 is 4268.65
+Double of char c is 198
+Double of potato is illegal
+2. Switch from a function to a struct to keep the count. Note that everything is now treated like an int:
+$ ./ex02.bin 
+Double of literal 3 is 6
+Double of literal 3.33 is 6
+Double of int 7 is 14
+Double of double 2134.33 is 4268
+Double of char c is 198
+Double of potato is illegal
+DoubleThis dub was used 5 times
+3. Binary predicate that sorts in descending order:
+template <typename T>
+struct DescendingOrder {
+  bool operator()(const T& t1, const T& t2) {
+    return (t1 > t2);
+  }
+};
+$ ./ex03.bin 
+Unsorted vector is :  3 18 -1 354 23 109 12 0 -2 0 23 77 17
+Ascending sort vector is :  -2 -1 0 0 3 12 17 18 23 23 77 109 354
+Descending sort vector is :  354 109 77 23 23 18 17 12 3 0 0 -1 -2

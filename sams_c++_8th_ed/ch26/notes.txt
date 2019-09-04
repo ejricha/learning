@@ -1,0 +1,13 @@
+Quiz:
+1. Before writing your own smart pointer class, look to STL and to Boost.
+2. A smart pointer should not slow your application down. The shared_ptr<> class is a bit heavy, but for multi-threaded applications any kind of pointer sharing would need some sort of wrapper anyway.
+3. Reference-counted smart pointers can hold the reference count data either directly in the object itself, or somewhere else on the heap that is pointed to by all shared objects.
+4. The linked list mechanism used by reference-linked pointers should be a doubly-linked list.
+
+Exercises:
+1. With the deprecated auto_ptr<>, what looks like a copy constructor is actually a move constructor. Once anotherObject is created from object, object points to nullptr.
+2. Slicing:
+unique_ptr<Carp> c = make_unique<Carp>();
+Swim(c); // No slicing, because the value being passed is really a smart pointer
+3. The copy constructor and copy assignment operator are deleted for unique_ptr<>:
+// copyTuna = myTuna;  // Error

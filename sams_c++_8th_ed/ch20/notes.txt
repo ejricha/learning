@@ -1,0 +1,31 @@
+Quiz:
+1. Womp womp, map<int> is invalid: error: wrong number of template arguments (1, should be at least 2). Assuming you meant map<int, T> the function that supplies the sort criteria is less<int>.
+2. Duplicates in a multimap are located right next to each other (in in-order tree traversal, at least).
+3. .size() returns the number of elements in a map or multimap.
+4. You would not find duplicate elements in a map.
+
+Exercises:
+1. If the names of the people need not be unique, use a multimap<>:
+multimap<string, string> phone_numbers;
+2. Define the binary predicate to sort on a string:
+struct fPredicate() {
+  operator()(const WordProperty& lhs, const WordProperty&, rhs) {
+    return (lhs.word < rhs.word);
+  }
+};
+3. Map vs. multimap with duplicates:
+$ ./ex03.bin 
+map<int, int>:
+ 2 -> 22
+ 4 -> 44
+map<int, int>:
+ 2 -> 22
+ 4 -> 55
+
+multimap<int, int>:
+ 2 -> 22
+ 4 -> 55
+multimap<int, int>:
+ 2 -> 22
+ 4 -> 55
+ 4 -> 88

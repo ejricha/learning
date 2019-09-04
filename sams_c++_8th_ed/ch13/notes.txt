@@ -1,0 +1,21 @@
+Quiz:
+1. Use dynamic_cast<>, and check against nullptr:
+  Derived1* d1 = dynamic_cast<Derived1*>(objBase);
+  if (d1) { cout << "Was of type Derived1\n"; }
+  Derived2* d2 = dynamic_cast<Derived2*>(objBase);
+  if (d2) { cout << "Was of type Derived2\n"; }
+2. If you are trying to use a const member on a function written by you, then clearly the function itself should be const. You would not try to obj.setData() if obj was const and setData() wasn't supposed to be const. Since you have access to the function, correct it yourself.
+3. True, reinterpret_cast<> is mostly used to force one object to be viewed as another type of object, such as bytes.
+4. Yes, most instances of static_cast<>() are automatically performed.
+
+Exercises:
+1. After using dynamic_cast<>(), must check the object against nullptr. This is the correct version:
+void DoSomething(Base* objBase) {
+  Derived* objDerived = dynamic_cast<Derived*>(objBase);
+  if (objDerived) {
+    objDer->DerivedClassMethod();
+  }
+2. Get a pointer Tuner* to point to this object of type Tuna:
+  // Declaring a pointer to base as a new derived class is odd..
+  Fish* objFish = new Tuna();
+  Tuna* pTuna = static_cast<Tuna*>(objFish);

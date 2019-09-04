@@ -1,0 +1,21 @@
+Quiz:
+1. To force all derived classes to implement functions Area() and Print(), make them pure virtual in the base class.
+2. No, a compiler only creates a Virtual Function Table (vtable) for classes that have at least one virtual function.
+3. A class with any pure virtual functions is an abstract base class, since it cannot be instantiated.
+
+Exercises:
+1. See below:
+class Shape {
+ public:
+  virtual int Area() = 0;
+  virtual void Print() = 0;
+};
+class Circle : public Shape {
+ public:
+  int Area() override { ... }
+  int Print() override { ... }
+};
+// class Triangle is just like class Circle
+2. The base class destructor should always be declared virtual.
+3. Order of constructors and destructors:
+Vehicle() -> Car() -> ~Vehicle()

@@ -1,0 +1,26 @@
+Quiz:
+1. The scope of a variable declared in the function's prototype is the function block.
+2. "int Func(int &someNumber);" passes someNumber as a reference. This is modifiable, and not a separate copy of the variable. It is called like "int a = Func(b);", without an ampersand signifying reference.
+3. A recursive function is one that invokes itself.
+4. Two functions with the same name and return type are called overloaded functions. They make take different argument lists of different names, sizes, and types, but their return types must always match.
+5. The stack pointer points to the top of the stack.
+
+Exercises:
+1. Overloaded functions that calculate the volume of a sphere and a cylinder:
+// Sphere
+double volume(double radius) {
+  return 4 * M_PI * radius * radius * radius / 3.;
+}
+// Cylinder
+double volume(double radius, double height) {
+  return M_PI * radius * radius * height;
+}
+2. Function that accepts an array of doubles as input:
+void do_nothing(double arr[], size_t len); // Must also pass the array length
+3. Function Area doesn't return anything, and yet result isn't passed by reference. It will always print "The area is: 0";
+4. Once a function argument is defaulted, all the subsequent ones must be defaulted as well.
+5. Function that returns multiple values by using references:
+void get_area_and_circumference(double radius, double &area, double &circumference) {
+  area = M_PI * radius * radius;
+  circumference = 2 * M_PI * radius;
+}

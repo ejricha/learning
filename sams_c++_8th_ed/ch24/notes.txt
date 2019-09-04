@@ -1,0 +1,35 @@
+Quiz:
+1. Yes, you can override the behaviour of priority queue to make it a min heap by supplying a binary predicate:
+priority_queue<int, vector<int>, greater<int>> pq; // #include <functional>
+2. Define operator<() for the class:
+bool operator<(const T& e) {
+  return (this < e);
+}
+3. No, with a stack you can only access the last element inserted. In a queue, you can access both the front() and the back(), but you can only push() to the back and pop() from the front.
+
+Exercises:
+1. Amended class that services by age and then by gender:
+class Person {
+ public:
+  int age;
+  bool isFemale;
+
+  bool operator<(const Person& p) const {
+    if (this.age < p.age) {
+      return true;
+    }
+    else if (this.age > p.age) {
+      return false;
+    }
+
+    if (this.isFemale) {
+      return true;
+    }
+    return !p.isFemale;
+  }
+};
+2. Program that reverses the user's string input using the stack class:
+$ ./ex02.bin 
+Enter a string:
+Happy Spooky Halloween!
+Reversed string is: !neewollaH ykoopS yppaH

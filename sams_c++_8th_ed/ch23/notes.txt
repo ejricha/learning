@@ -1,0 +1,21 @@
+Quiz:
+1. Use list::remove_if() to remove items from a list, to ensure that existing iterators to elements in the list (that were not removed) still remain valid.
+2. In the absence of an explicitly specified binary predicate operator()(const T& e1, const T& e2) { return (e1 < e2); }, a custom class will invoke std::less<>, which will use the operator<(const T& e) { ... } of the class.
+3. The generate() algorithm invokes the generator() function once for every element in the range supplied.
+4. for_each() simply runs a given function on all elements in a range. transform() will take a const iterator or two and perform an operation on every function, and return the value to a new container sent in the parameters.
+
+Exercises:
+1. Binary predicate that accepts strings as input arguments and returns a value based on case-insensitive comparison:
+bool CaseInsensitiveCompare(const string& s1, const string& s2) {
+  // Store a lowercase copy of each string
+  string c1; c1.reserve(s1.size());
+  string c2; c2.reserve(s2.size());
+  transform(s1.cbegin(), s1.cend(), c1.begin(), ::tolower);
+  transform(s2.cbegin(), s2.cend(), c2.begin(), ::tolower);
+  return (c1 < c2);
+}
+2. Copy between two different containers:
+list<int> l { 2, 3, 4, 5, 6 };
+vector<int> v(l.size());
+copy(l.cbegin(), l.cend(), v.begin());
+3. Since the size of a star is probably not going to be an integer, and no two stars will have the exact same size, I'd just use sort(). We can always restore stability by doing a secondary sort on stars that happen to have the same size.

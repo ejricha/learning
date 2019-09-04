@@ -1,0 +1,20 @@
+Quiz:
+1. You can't assign a const reference to a non-const reference because then you would be able to change the value via the non-const reference. For example:
+int i = 7;
+int &r1 = i;
+++r1; // allowed
+const int& r2 = r1;
+++r2; // not allowed
+int &r3 = r2; // not allowed
+++r3; // would be allowed
+2. Yes, new and delete are functions (really they are operator functions) that allocate memory (usually via malloc()) and delete it (usually via free()).
+3. The value of a pointer variable is a memory address that points to a value.
+4. To access the data pointed to by "int* p;", dereference it like "cout << *p;" - use operator *;
+
+Exercises:
+1. 40 (NOT the memory address of number, as pointers to pointer are allowed ad infinitum)
+2. All three overloaded functions are called DoSomething(), return an int, and take two integer arguments. The first takes the arguments by value, the second takes them by reference, and the third takes them by pointer. The first two are called exactly the same, like "DoSomething(x, y);", but the third needs the memory address of a value, or a direct pointer to a value, as in "DoSomething(&x, &y);". The third function also needs to check the pointers against NULL.
+3. const int* number = 3;
+4. "pointToAnInt = 9;" assigns the address stored in memory of pointToAnInt to 9, not the value. It should have been "*pointToAnInt = 9";
+5. Only one pointer had an integer allocated to it, but it was deleted twice. Never delete the copy of a pointer, only the thing to which it points.
+6. 30

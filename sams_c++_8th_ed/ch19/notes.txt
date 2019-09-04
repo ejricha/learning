@@ -1,0 +1,46 @@
+Quiz:
+1. For the default sort operator in set<int>, it is really set<int, less<int>>.
+2. Duplicate elements in a multiset would be stored right next to each other, because it is a BST.
+3. set/multiset.size() returns the number of elements in the container.
+
+Exercises:
+1. Just use phone_number in operator==() and operator<() functions:
+$ ./ex01.bin 
+ John Travolta: +1 234 4563 789
+ Ben Affleck: +1 745 641 314
+ Jack Welsch: +1 7889 879 879
+ Bill Gates: +1 97 7897 8799 8
+ Angi Merkel: +49 23456 5466
+ Vlad Putin: +7 6645 4564 789
+Enter a phone number you wish to delete: +1 97 7897 8799 8
+Displaying contacts after erasing +1 97 7897 8799 8
+ John Travolta: +1 234 4563 789
+ Ben Affleck: +1 745 641 314
+ Jack Welsch: +1 7889 879 879
+ Angi Merkel: +49 23456 5466
+ Vlad Putin: +7 6645 4564 789
+2. Use a multiset to define a dictionary:
+$ ./ex02.bin 
+ do : A deer, a female deer
+Enter a word ('x' to quit): cat
+Enter a definition: A lumpy thing that sleeps all day
+ cat : A lumpy thing that sleeps all day
+ do : A deer, a female deer
+Enter a word ('x' to quit): potato
+Enter a definition: A word I say a lot
+ cat : A lumpy thing that sleeps all day
+ do : A deer, a female deer
+ potato : A word I say a lot
+Enter a word ('x' to quit): potato
+Enter a definition: Another lumpy thing, that you eat
+ cat : A lumpy thing that sleeps all day
+ do : A deer, a female deer
+ potato : A word I say a lot
+ potato : Another lumpy thing, that you eat
+Enter a word ('x' to quit): x
+Exiting, dictionary has:
+ cat : A lumpy thing that sleeps all day
+ do : A deer, a female deer
+ potato : A word I say a lot
+ potato : Another lumpy thing, that you eat
+3. See Listing 19.2

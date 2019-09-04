@@ -1,0 +1,17 @@
+Quiz:
+1. C++ is case sensitive, so "Int" should be "int".
+2. Yes, multi-line comments using /* and */ can span multiple lines.
+
+Exercises:
+1. There are three bugs: "Cout" should be "cout", the open quotation mark is missing, and main() must return an int.
+2. Once it is fixed, it outputs "Is there a bug here?".
+3. See output below:
+$ ./ex03.bin 
+This is a simple string literal
+Writing number five: 5
+Performing division 10 / 5 = 2
+Performing subtraction 10 - 5 = 5
+Performing multiplication 10 * 5 = 50
+Pi when approximated is 22 / 7 = 3
+Pi is 22 / 7 = 3.14286
+Pis is also 3.14286 = 3.14286

@@ -1,0 +1,16 @@
+Quiz:
+1. No, the number of bits in a bitset is fixed at compile time, it cannot be resized.
+2. The bitset is not classified as a container class because it only holds one type of object: a bit.
+3. No, if the number of bits is fixed and known at compile time, use a bitset instead of a vector<bool>.
+
+Exercises:
+1. Use bitset.to_ulong() to convert to number.
+2. Use bitset.flip() (or ~bitset) to flip bits.
+./ex.bin 
+b1 = 01100100 (100)
+b2 = 11010111 (215)
+Add two bitsets together (b1 + b2):
+b3 = 100111011 (315)
+Toggle the bits in b3:
+~b3 = 011000100 (196)
+b3.flip() = 011000100 (196)

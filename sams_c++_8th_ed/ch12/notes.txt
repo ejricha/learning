@@ -1,0 +1,39 @@
+Quiz:
+1. No, the function signatures match exactly. To make one a read-only operation:
+const Type& operator [](int index) const;
+2. If you want to prevent copying of objects, you can declare the copy constructor/assignment operator as private, but you'd be better off deleting them.
+3. A move constructor/assignment operator isn't necessary because there are no dynamically allocated resources within the class.
+
+Exercises:
+1. Convert Date to an integer:
+explicit operator int() {
+  return (year * 10000 + month * 100 + day);
+}
+2. Move constructor/assignment operator:
+class DynIntegers {
+ public:
+  // Move constructor
+  DynIntegers(DynIntegers&& d) {
+    array = d.array;
+    len = d.len;
+    d.array = NULL;
+    d.len = 0;
+  }
+
+  // Move assignment operator
+  DynIntegers& operator =(DynIntegers&& d) {
+    if (this != &d) {
+      if (array != NULL) {
+        delete[] array;
+      }
+      array = d.array;
+      len = d.len;
+      d.array = NULL;
+      d.len = 0;
+    }
+  }
+  
+ private:
+  int* array;
+  int len;
+};

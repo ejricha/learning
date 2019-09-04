@@ -1,0 +1,36 @@
+Quiz:
+1. No, elements can only be inserted at the end of a vector<T> in constant time; insertion anywhere else is O(n).
+2. If size() = 10 and capacity() = 20, you can insert 10 more elements without reallocation.
+3. pop_back() removes the last element from the vector/deque and returns it.
+4. vector<Mammal> is a dynamic array of Mammals. This is not a pointer to Mammal, so it cannot hold any derived classes like Cat or Human, or those derived class-specific members would be sliced off.
+5. Yes, elements in a vector can be randomly accessed using iterators, the at() member function, or the standard array susbscript operator [].
+6. Random access iterators allow for random access of elements in a vector.
+
+Exercises:
+1. Display a vector index:
+$ ./ex01.bin 
+Input 5 integers: 5 6 7 8 9
+Input an index to display: 2
+v[2] = 7
+v.at(2) = 7
+*(v.begin() + 2) = 7
+$ ./ex01.bin 
+Input 5 integers: 1 2 3 4 5
+Input an index to display: 5
+Invalid index 5, range is [0, 5)
+2. Use std::find() to find an index by value:
+$ ./ex02.bin 
+Input 5 integers: 3 4 5 6 7
+Input an index to display: 0
+v[0] = 3
+v.at(0) = 3
+*(v.begin() + 0) = 3
+Search for a value: 7
+Found 7 at index 4: 7
+$ ./ex02.bin 
+3. No, this is dumb.
+4. Initialize a deque using list initializers, and iterate through the elements:
+$ ./ex04.bin 
+d[0] = Hello
+d[1] = Containers are cool!
+d[2] = C++ is evolving!

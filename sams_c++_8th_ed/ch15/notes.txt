@@ -1,0 +1,10 @@
+Quiz:
+1. A container that has an array of objects with insertion possible at the front and back is a std::deque. A std::vector only allows insertion at the back.
+2. To store elements for quick lookup, use std::set (BST), or std::unordered_set (Hash) if the order is not important. If you need key/value pairs, use a std::map, and if duplicates are allowed use an std::multimap. I guess what I'm saying is to use a std::[unordered_][multi]set/map.
+3. To store elements in a std::set but still have the storage and lookup criteria altered, you can overload the comparison functions. This is a good use case for a lambda.
+4. The feature in STL that is used to connect algorithms and containers is iterators.
+5. To implement a portable hash set, use std::unordered_set.
+
+Exercises:
+(None)
+

@@ -1,0 +1,42 @@
+Quiz:
+1. The std::string class specializes the std::basic_string<T> template. It is std::basic_string<char>, while std::wstring is std::basic_string<wchar>.
+2. To perform case-insensitive comparison of two strings:
+  #include <algorithm>
+  transform(s1.begin(), s1.end(), ::tolower); // Convert s1 to lowercase
+  transform(s2.begin(), s2.end(), ::tolower); // Convert s2 to lowercase
+  if (s1 == s2) { ... } // Compare the strings
+3. Yes, the STL string and a C-style string a similar, since they are essentially a character array that ends with the null string terminator '\0'. However, the C-style string is not resizable, mutable, etc.
+
+Exercises:
+1. Test if a word is a palindrome (O(n), worked on first compilation! I also could have used reverse()):
+$ ./ex01.bin 
+Input a word: AtoyOTa
+Word (lowercase) is (atoyota)
+atoyota is a palindrome
+2. Count the number of vowels in a sentence (O(n) with a switch statement):
+$ ./ex02.bin 
+Input a sentence: The pope went skiing
+Word (lowercase) is (the pope went skiing)
+the pope went skiing contained 6 vowels
+$ ./ex02.bin 
+Input a sentence: Slurm
+Word (lowercase) is (slurm)
+slurm contained 1 vowel
+$ ./ex02.bin 
+Input a sentence: Extra sexy senators had fish on their lunch break
+Word (lowercase) is (extra sexy senators had fish on their lunch break)
+extra sexy senators had fish on their lunch break contained 14 vowels (excluding y)
+3. Use iterators to convert every other letter in a sentence to uppercase (O(n)):
+$ ./ex03.bin 
+Input a sentence: this was lowercase, THIS IS ALREADY UPPERCASE
+Sentence was (this was lowercase, THIS IS ALREADY UPPERCASE)
+Sentence is now (ThIs wAs lOwErCaSe, THIS IS ALREADY UPPERCASE)
+4. Concatenate strings and spaces, requires no algorithms:
+$ ./ex04.bin 
+I Love STL String
+5. Use the string.find() algorithm:
+$ ./ex05.bin 
+Sentence was "Good day String! Today is beautiful!", searching for 'a'
+6 : a
+20 : a
+28 : a

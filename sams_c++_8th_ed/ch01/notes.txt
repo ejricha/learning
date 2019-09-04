@@ -1,0 +1,11 @@
+Quiz:
+1. An interpreter is a tool that interprets what you code (or an intermediate byte code) and performs certain actions. A compiler is one that takes your code as an input and generates an object file. In the case of C++, after compiling and linking, you have an executable that can be run directly by the processor without need for any further interpretation.
+2. A compiler takes a C++ code file as input and generates an object file in machine language. Often your code has dependencies on libraries and functions in other code files. Creating these links and generating that integrates all dependencies directly and indirectly coded by you is the job of the linker. The linker takes compiled object code and fills in missing libraries (statically or dynamically).
+3. The steps in the normal development cycle are Programming, Pre-processing, Compiling, Linking, and Executing
+
+Exercises:
+1. It produces the test "\n2 48 14\n" and returns 0.
+2. Yep, confirmed: "2 48 14".
+3. There is no # in the #include line.
+4. Confirmed: ex03.cpp:1:1: error: ‘include’ does not name a type; did you mean ‘__has_include’?
+   After fixing it outputs "Hello Buggy World".

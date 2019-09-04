@@ -1,0 +1,21 @@
+Quiz:
+1. Unsigned integers are used only to define non-negative numbers, but they have twice the range of signed integers ([0, 2^N) vs [-2^(N-1), 2^(N-1))). Signed integers use the MSB as a sign bit.
+2. You shouldn't use #define to define a constant because it doesn't do any calculation or error checking, it simply replaces text. Use a const instead.
+3. Initializing a variable prevents an error if it is used before it is defined. It gives it a definite, non-random value.
+4. Since enums start at 0 by default, Queen=2.
+5. "int Integer = 0;" is valid because Integer is not a reserved word (nor is integer). However, the name is non-descriptive and repeats the type (avoid Hungarian notation). A better variable name would reveal its purpose, such as "int age = 5;".
+
+Exercises:
+1. enum YourCards {Ace, Jack, Queen=45, King}; // method 1
+   enum YourCards {Ace=45, Jack, Queen, King}; // method 3
+   
+2. $ ./ex02.bin 
+Size of unsigned int: 4 = 4
+Size of normal int: 4 = 4
+Size of long int: 8 = 8
+3. $ ./ex03.bin 
+Input a radius as a double: 10.01
+Area is 314.788
+Circumference is 62.8947
+4. If the are and circumference were stored as integers instead of doubles, they would be floored.
+5. "auto Integer;" gives an error because automatic variables must be defined when they are declared.
