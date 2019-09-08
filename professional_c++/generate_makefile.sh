@@ -29,7 +29,7 @@ do
   BINS+=" $B"
 
   # Dependencies
-  F=`ls -1d $D/*.cpp`
+  F=`ls -1d $D/*/*.cpp`
 
   # Rule for this binary
   RULES+="\n$B : $F\n\t\$(CXX) \$(CFLAGS) -o \$@ \$^\n"
