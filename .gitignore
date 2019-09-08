@@ -1,0 +1,11 @@
+# .gitignore for ejricha/learning
+
+# Ignore compiled files
+*.pyc
+*.o
+*.so
+*.a
+*.bin
+
+# Ignore log files
+*.log
