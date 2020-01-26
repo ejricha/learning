@@ -1,0 +1,3 @@
+# Ignore all build and graph directories
+build*/
+graph/
