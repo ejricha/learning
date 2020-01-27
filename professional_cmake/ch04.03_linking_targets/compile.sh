@@ -25,4 +25,4 @@ do
 done
 
 # Also create links in all the svg files
-./svg_fix_links.py $BUILD/$GRAPH/*.svg
+./svg_create_links.py $BUILD/$GRAPH/*.svg
