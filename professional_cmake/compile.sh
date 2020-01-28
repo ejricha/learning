@@ -17,6 +17,7 @@ mv $GRAPH/$DOT $GRAPH/$DOT.ALL
 # Build all the targets
 cmake --build .
 cd -
+echo
 
 # Convert graphs into .svg files
 for F in $BUILD/$GRAPH/$DOT.*

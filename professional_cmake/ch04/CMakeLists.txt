@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-# Set the project ame
+# Set the project name
 project(Ch04)
 
 # Executable
