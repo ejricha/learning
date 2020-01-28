@@ -31,3 +31,7 @@ set(cachedSetFile /tmp/non-existant/cached/file CACHE FILEPATH "Cached file")
 
 # Set an option (always bool)
 option(cachedOptionBool "Cached option (always bool)" ON)
+
+# Show available options
+set(trafficLight Green CACHE STRING "Status of something")
+set_property(CACHE trafficLight PROPERTY STRINGS Red Orange Green)
