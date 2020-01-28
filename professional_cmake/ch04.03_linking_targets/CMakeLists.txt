@@ -14,7 +14,9 @@ add_library(ui src4.cpp)
 
 # Library and app dependencies
 target_link_libraries(collector
-  PUBLIC ui
-  PRIVATE algo engine
+	PUBLIC ui
+	PRIVATE algo engine
 )
-target_link_libraries(myApp PRIVATE collector)
+target_link_libraries(myApp
+	PRIVATE collector
+)
