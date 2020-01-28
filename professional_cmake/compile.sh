@@ -11,7 +11,9 @@ mkdir -p $BUILD
 cd $BUILD
 
 # Run CMake, and generate dependency graphs
-cmake -GNinja --graphviz=$GRAPH/$DOT ..
+GENERATOR="Ninja"
+OPTIONS="--loglevel=DEBUG" # --log-level in CMake 3.16 or later
+cmake -G"$GENERATOR" $OPTIONS --graphviz=$GRAPH/$DOT ..
 mv $GRAPH/$DOT $GRAPH/$DOT.ALL
 
 # Build all the targets
