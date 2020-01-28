@@ -18,6 +18,9 @@ message(NOTICE "NOTICE myVariableName = ${myVariableName}") # default
 #message(SEND_ERROR "message SEND_ERROR myVariableName = ${myVariableName}")
 #message(FATAL_ERROR "message FATAL_ERROR myVariableName = ${myVariableName}")
 
+# Show everything that happened to var1
+variable_watch(var1)
+
 # Set and unset variables
 set(var1 "one")
 message(NOTICE "var1 is set (${var1})")
