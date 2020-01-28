@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project ame
-project(Ch04.03)
+project(Ch04)
 
 # Executable
 add_executable(myApp main.cpp)

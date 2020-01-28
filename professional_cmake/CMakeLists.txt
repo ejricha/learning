@@ -7,4 +7,4 @@ project(Learning)
 set(BUILD_SHARED_LIBS YES)
 
 # Add all subdirectories
-add_subdirectory(ch04.03_linking_targets)
+add_subdirectory(ch04)
