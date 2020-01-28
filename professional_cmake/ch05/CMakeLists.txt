@@ -23,3 +23,8 @@ set(var1 "one")
 message(NOTICE "var1 is set (${var1})")
 unset(var1)
 message(NOTICE "var1 is unset (${var1})")
+
+# Save as a cache variable
+set(cachedString "cached string value" CACHE STRING "Cached string")
+set(cachedBool ON CACHE BOOL "Cached bool")
+set(cachedFile /tmp/non-existant/cached/file CACHE FILEPATH "Cached file")
