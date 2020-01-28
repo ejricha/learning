@@ -27,4 +27,4 @@ done
 rm $BUILD/$GRAPH/$DOT.*
 
 # Also create links in all the svg files
-./svg_create_links.py $BUILD/$GRAPH/*.svg
+./svg_create_links.py $BUILD/$GRAPH/*.svg &>/dev/null
