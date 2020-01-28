@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(learning)
 
-# Automatically build shared libraries
-set(BUILD_SHARED_LIBS YES)
+# Set the project ame
+project(Ch04.03)
 
 # Executable
 add_executable(myApp main.cpp)

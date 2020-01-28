@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Set some variables
 BUILD=build
 GRAPH=graph
 DOT=graph.dot
@@ -18,11 +19,12 @@ cmake --build .
 cd -
 
 # Convert graphs into .svg files
-for F in $BUILD/$GRAPH/$DOT*
+for F in $BUILD/$GRAPH/$DOT.*
 do
 	O=${F/$DOT\./}
 	dot -Tsvg $F -o $O.svg
 done
+rm $BUILD/$GRAPH/$DOT.*
 
 # Also create links in all the svg files
 ./svg_create_links.py $BUILD/$GRAPH/*.svg

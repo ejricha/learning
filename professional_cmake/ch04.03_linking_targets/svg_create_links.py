@@ -1,1 +1,0 @@
-../../.external/scripts/python/svg_create_links.py

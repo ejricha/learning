@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.15)
+
+# Set top-level name
+project(Learning)
+
+# Automatically build shared libraries
+set(BUILD_SHARED_LIBS YES)
+
+# Add all subdirectories
+add_subdirectory(ch04.03_linking_targets)
