@@ -8,3 +8,4 @@ set(BUILD_SHARED_LIBS YES)
 
 # Add all subdirectories
 add_subdirectory(ch04)
+add_subdirectory(ch05)
