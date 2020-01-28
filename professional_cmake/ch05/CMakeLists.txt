@@ -17,3 +17,9 @@ message(NOTICE "NOTICE myVariableName = ${myVariableName}") # default
 #message(WARNING "message WARNING myVariableName = ${myVariableName}")
 #message(SEND_ERROR "message SEND_ERROR myVariableName = ${myVariableName}")
 #message(FATAL_ERROR "message FATAL_ERROR myVariableName = ${myVariableName}")
+
+# Set and unset variables
+set(var1 "one")
+message(NOTICE "var1 is set (${var1})")
+unset(var1)
+message(NOTICE "var1 is unset (${var1})")
