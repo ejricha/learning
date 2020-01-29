@@ -71,3 +71,12 @@ message("LIST after duplicates removed (${myList})")
 list(SORT myList)
 message("LIST after sorting (${myList})")
 # Also POP_FRONT, POP_BACK, and REVERSE
+
+# Math functions
+set(myX 30)
+set(myY 40)
+math(EXPR myZ "${myX}*${myX} + ${myY}*${myY}")
+message("decimal = ${myZ}")
+math(EXPR myZHex "${myX}*${myX} + ${myY}*${myY}" OUTPUT_FORMAT HEXADECIMAL)
+message("hex = ${myZHex}")
+# Valid operators: + - * / % | & ^ ~ << >> * / %
