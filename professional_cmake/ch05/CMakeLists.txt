@@ -38,3 +38,14 @@ option(cachedOptionBool "Cached option (always bool)" ON)
 # Show available options
 set(trafficLight Green CACHE STRING "Status of something")
 set_property(CACHE trafficLight PROPERTY STRINGS Red Orange Green)
+
+# String commands
+set(stringToSearch "A bc bcA abc Cba Bac A Bc a BCAB")
+string(FIND ${stringToSearch} "a" indexForward)
+string(FIND ${stringToSearch} "a" indexReverse REVERSE)
+message("In string '${stringToSearch}', first 'a' is at index ${indexForward} and last one is at index ${indexReverse}")
+string(REPLACE "b" "X" stringAfterReplace ${stringToSearch})
+message("After REPLACE: ${stringAfterReplace}")
+string(REGEX REPLACE "[cC]" "Y" stringAfterRegex ${stringToSearch})
+message("After REGEX REPLACE: ${stringAfterRegex}")
+# Also SUBSTRING, LENGTH, TOLOWER, TOUPPER, and STRIP
