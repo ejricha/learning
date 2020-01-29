@@ -49,3 +49,25 @@ message("After REPLACE: ${stringAfterReplace}")
 string(REGEX REPLACE "[cC]" "Y" stringAfterRegex ${stringToSearch})
 message("After REGEX REPLACE: ${stringAfterRegex}")
 # Also SUBSTRING, LENGTH, TOLOWER, TOUPPER, and STRIP
+
+# List commands
+set(myList a b c d e)
+list(LENGTH myList myListLength)
+list(GET myList 0 myListFirstElement)
+list(GET myList 1 4 0 3 4 3 myListBeaded)
+message("LIST myList (${myList})")
+message("LIST has length ${myListLength}")
+message("LIST element 0 = ${myListFirstElement}")
+message("LIST elements out of order = ${myListBeaded}")
+list(INSERT myList 2 x y z e d c b a X Y Z)
+list(PREPEND myList BEGIN)
+list(APPEND myList END)
+message("LIST now (${myList})")
+list(FIND myList e elementIndex)
+message("LIST has 'e' at index ${elementIndex}")
+list(REMOVE_DUPLICATES myList)
+# Also REMOVE_ITEM and REMOVE_AT
+message("LIST after duplicates removed (${myList})")
+list(SORT myList)
+message("LIST after sorting (${myList})")
+# Also POP_FRONT, POP_BACK, and REVERSE
