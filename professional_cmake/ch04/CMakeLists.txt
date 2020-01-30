@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.15)
 
 # Set the project name
 project(Ch04)
+message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Executable
 add_executable(myApp main.cpp)
