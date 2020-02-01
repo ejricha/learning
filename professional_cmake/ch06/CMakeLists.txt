@@ -4,6 +4,20 @@ cmake_minimum_required(VERSION 3.15)
 project(Ch06)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
+# Good examples of common if statements
+message("Check for MSVC (${MSVC}) instead of WIN32 (${WIN32})")
+if (MSVC)
+	message("  Compiling for MSVC")
+else()
+	message("  Not compiling for MSVC")
+endif()
+message("Check if CMAKE_GENERATOR (${CMAKE_GENERATOR}) is Xcode instead of APPLE (${APPLE})")
+if (CMAKE_GENERATOR STREQUAL "Xcode")
+	message("  Compiling for Xcode")
+else()
+	message("  Not compiling for Xcode")
+endif()
+
 # For loop with nested if statements
 foreach(i RANGE 0 4)
 	if(${i} LESS 1)
