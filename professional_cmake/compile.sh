@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Set some variables
-BUILD=build
-GRAPH=graph
-DOT=graph.dot
+DIR=`dirname $0`
+BUILD="$DIR/build"
+GRAPH="graph"
+DOT="graph.dot"
 
 # Reset the build dir
 rm -rf $BUILD
