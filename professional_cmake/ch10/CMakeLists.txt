@@ -17,3 +17,10 @@ add_executable(${PROJECT_NAME}_app2 app2.cpp $<TARGET_OBJECTS:${PROJECT_NAME}_ob
 
 # Uncomment to show a lot of info
 #ShowAllProperties()
+
+# Also build all the apps into the phony chapter target
+add_custom_target(${PROJECT_NAME}
+	DEPENDS
+	${PROJECT_NAME}_app1
+	${PROJECT_NAME}_app2
+	)

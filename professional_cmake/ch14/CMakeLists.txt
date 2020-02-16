@@ -62,7 +62,7 @@ target_link_libraries(${PROJECT_NAME}_app1 ${PROJECT_NAME}_lib1)
 target_link_libraries(${PROJECT_NAME}_app2 ${PROJECT_NAME}_lib2)
 target_link_libraries(${PROJECT_NAME}_app3 ${PROJECT_NAME}_lib3)
 
-# Also build all the apps into the phony ch14 target
+# Also build all the apps into the phony chapter target
 add_custom_target(${PROJECT_NAME}
 	DEPENDS
 	${PROJECT_NAME}_app0

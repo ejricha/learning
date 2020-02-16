@@ -21,3 +21,8 @@ target_link_libraries(${PROJECT_NAME}_collector
 target_link_libraries(${PROJECT_NAME}_app
 	PRIVATE ${PROJECT_NAME}_collector
 )
+# Also build the app into the phony chapter target
+add_custom_target(${PROJECT_NAME}
+	DEPENDS
+	${PROJECT_NAME}_app
+	)
