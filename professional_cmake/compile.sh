@@ -12,7 +12,7 @@ OPTIONS="--loglevel=DEBUG" # --log-level in CMake 3.16 or later
 rm -rf $BUILD
 mkdir -p $BUILD
 cd $BUILD
-cmake -G"$GENERATOR" $OPTIONS ..
+cmake -G"$GENERATOR" -DCMAKE_BUILD_TYPE=Debug $OPTIONS ..
 echo
 
 # Build all the targets

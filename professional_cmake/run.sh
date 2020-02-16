@@ -3,7 +3,7 @@
 # Build the code in the specified directory
 
 DIR=`dirname $0`
-PROJECT="ch14"
+PROJECT="ch10"
 NINJA="ninja -C $DIR/build"
 OPTS="-j1 -v"
 
