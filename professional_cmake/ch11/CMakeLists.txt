@@ -11,4 +11,4 @@ project(Ch11)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Allow printing of variables/properties
-ShowAllProperties()
+#ShowAllProperties() # Too noisy

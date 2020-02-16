@@ -9,11 +9,11 @@ include(${CMAKE_SOURCE_DIR}/cmake/Debug.cmake)
 
 # Show the properties before and after searching for boost
 message(STATUS "Before:")
-ShowAllProperties()
+#ShowAllProperties() # Very noisy
 find_package(Boost)
 message(STATUS)
 message(STATUS "After:")
-ShowAllProperties()
+#ShowAllProperties() # Very noisy
 
 # Ways to set properties:
 #  set_property()

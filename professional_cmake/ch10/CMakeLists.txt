@@ -15,4 +15,5 @@ add_library(${PROJECT_NAME}_obj_lib OBJECT src1.cpp src2.cpp)
 add_executable(${PROJECT_NAME}_app1 app1.cpp $<TARGET_OBJECTS:${PROJECT_NAME}_obj_lib>)
 add_executable(${PROJECT_NAME}_app2 app2.cpp $<TARGET_OBJECTS:${PROJECT_NAME}_obj_lib>)
 
-ShowAllProperties()
+# Uncomment to show a lot of info
+#ShowAllProperties()
