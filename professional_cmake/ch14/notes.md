@@ -75,3 +75,9 @@ Important variables:
 * CMAKE_CXX_FLAGS_RELEASE = `-O3 -DNDEBUG`
 * CMAKE_CXX_FLAGS_RELWITHDEBINFO = `-O2 -g -DNDEBUG`
 * CMAKE_CXX_FLAGS_MINSIZEREL = `-Os -DNDEBUG`
+
+# Adding to flags
+`string(APPEND CMAKE_CXX_FLAGS " -Wall -Werror")`
+
+# NOTE:
+Without the FORCE keyword, the set() command only updates a cache variable if it is not already defined.<Paste>
