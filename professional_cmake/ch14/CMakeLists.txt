@@ -9,8 +9,8 @@ project(Ch14)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Add several different libraries and executables
-add_library(ch14_lib_1 lib.cpp)
-add_executable(ch14_app_1 app.cpp)
+add_library(${PROJECT_NAME}_lib1 lib.cpp)
+add_executable(${PROJECT_NAME}_app1 app.cpp)
 
 # Link the library to the executable
-target_link_libraries(ch14_app_1 ch14_lib_1)
+target_link_libraries(${PROJECT_NAME}_app1 ${PROJECT_NAME}_lib1)
