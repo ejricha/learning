@@ -9,8 +9,51 @@ project(Ch14)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Add several different libraries and executables
+add_library(${PROJECT_NAME}_lib0 lib.cpp)
 add_library(${PROJECT_NAME}_lib1 lib.cpp)
+add_library(${PROJECT_NAME}_lib2 lib.cpp)
+add_executable(${PROJECT_NAME}_app0 app.cpp)
 add_executable(${PROJECT_NAME}_app1 app.cpp)
+add_executable(${PROJECT_NAME}_app2 app.cpp)
+
+# Modify the compile/link options for some things
+set_target_properties(${PROJECT_NAME}_lib1
+	PROPERTIES
+	COMPILE_DEFINITIONS MESSAGE=1
+	)
+set_target_properties(${PROJECT_NAME}_lib2
+	PROPERTIES
+	COMPILE_DEFINITIONS MESSAGE=0
+	)
+set_target_properties(${PROJECT_NAME}_lib2
+	PROPERTIES
+	LINK_OPTIONS LINKER:-stats
+	)
+set_target_properties(${PROJECT_NAME}_app1
+	PROPERTIES
+	COMPILE_DEFINITIONS MESSAGE=0
+	)
+set_target_properties(${PROJECT_NAME}_app2
+	PROPERTIES
+	LINK_OPTIONS LINKER:-stats
+	)
+target_compile_definitions(${PROJECT_NAME}_lib2
+	PUBLIC
+	MESSAGE="from target_compile_definitions"
+	)
 
 # Link the library to the executable
+target_link_libraries(${PROJECT_NAME}_app0 ${PROJECT_NAME}_lib0)
 target_link_libraries(${PROJECT_NAME}_app1 ${PROJECT_NAME}_lib1)
+target_link_libraries(${PROJECT_NAME}_app2 ${PROJECT_NAME}_lib2)
+
+# Also join all the add the phony Ch14 target
+add_custom_target(${PROJECT_NAME}
+	DEPENDS
+	${PROJECT_NAME}_lib0
+	${PROJECT_NAME}_lib1
+	${PROJECT_NAME}_lib2
+	${PROJECT_NAME}_app0
+	${PROJECT_NAME}_app1
+	${PROJECT_NAME}_app2
+	)
