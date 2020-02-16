@@ -70,3 +70,21 @@ add_custom_target(${PROJECT_NAME}
 	${PROJECT_NAME}_app2
 	${PROJECT_NAME}_app3
 	)
+
+# Show all the compiler and linker flags
+foreach(LANG C CXX FORTRAN)
+	message(STATUS "CMAKE_${LANG}_FLAGS = ${CMAKE_${LANG}_FLAGS}")
+	foreach(CONFIG DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+		set(_val ${CMAKE_${LANG}_FLAGS_${CONFIG}})
+		message(STATUS "CMAKE_${LANG}_FLAGS_${CONFIG} = ${CMAKE_${LANG}_FLAGS_${CONFIG}}")
+	endforeach()
+	message(STATUS) # newline
+endforeach()
+foreach(TARGETTYPE EXE STATIC SHARED MODULE)
+	message(STATUS "CMAKE_${TARGETTYPE}_FLAGS = ${CMAKE_${TARGETTYPE}_FLAGS}")
+	foreach(CONFIG DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
+		set(_val ${CMAKE_${TARGETTYPE}_FLAGS_${CONFIG}})
+		message(STATUS "CMAKE_${TARGETTYPE}_FLAGS_${CONFIG} = ${CMAKE_${TARGETTYPE}_FLAGS_${CONFIG}}")
+	endforeach()
+	message(STATUS) # newline
+endforeach()
