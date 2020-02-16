@@ -5,7 +5,7 @@
 DIR=`dirname $0`
 PROJECT="ch14"
 NINJA="ninja -C $DIR/build"
-OPTS="-v"
+OPTS="-j1 -v"
 
 # Compile
 $NINJA clean
