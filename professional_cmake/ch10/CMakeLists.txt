@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.15)
 include(${CMAKE_SOURCE_DIR}/cmake/Debug.cmake)
 
 # Set the project name
-project(Ch10)
+project(ch10)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Don't actually build obj_lib.so/.a

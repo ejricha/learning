@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project name
-project(Ch06)
+project(ch06)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Good examples of common if statements

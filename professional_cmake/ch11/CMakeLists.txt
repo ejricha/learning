@@ -7,7 +7,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(Debug)
 
 # Set the project name
-project(Ch11)
+project(ch11)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Allow printing of variables/properties

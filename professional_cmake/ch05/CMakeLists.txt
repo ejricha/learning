@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project name
-project(Ch05)
+project(ch05)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Set a variable

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Set the project name
-project(Ch09)
+project(ch09)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Allow us to easily print all properties

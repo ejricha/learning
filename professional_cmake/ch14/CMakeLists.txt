@@ -5,7 +5,7 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(Debug)
 
 # Set the project name
-project(Ch14)
+project(ch14)
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
 # Add several different libraries and executables
@@ -47,7 +47,7 @@ target_link_libraries(${PROJECT_NAME}_app0 ${PROJECT_NAME}_lib0)
 target_link_libraries(${PROJECT_NAME}_app1 ${PROJECT_NAME}_lib1)
 target_link_libraries(${PROJECT_NAME}_app2 ${PROJECT_NAME}_lib2)
 
-# Also join all the add the phony Ch14 target
+# Also join all the add the phony ch14 target
 add_custom_target(${PROJECT_NAME}
 	DEPENDS
 	${PROJECT_NAME}_lib0
