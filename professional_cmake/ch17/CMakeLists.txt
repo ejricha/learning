@@ -6,18 +6,26 @@ include(Debug)
 
 # Set the project name
 project(ch17)
-
 message("\n\n[Project ${PROJECT_NAME}]\n")
 
-# Helper function to add targets
+# Shortcut to cmake -E commands
+set(RUN ${CMAKE_COMMAND} -E)
+set(RUN_ECHO ${CMAKE_COMMAND} -E echo)
+set(RUN_MKDIR ${CMAKE_COMMAND} -E make_directory)
+
+# Helper function to add custom targets and commands
 function(TargetHelper target file)
 	message("Target ${target} will produce file ${file}")
-	add_custom_target(${target} ALL
+	set(note "Appending date to ${file}")
+	add_custom_command(OUTPUT ${file}
+		COMMAND ${RUN_ECHO} ${note}
+		COMMAND echo "${file}" >> ${file}
 		COMMAND date >> ${file}
-		COMMAND echo "From target ${target}" >> ${file}
 		COMMAND echo >> ${file}
-		BYPRODUCTS ${file}
-		COMMENT "Appending date to ${file} from ${target}"
+		COMMENT ${note}
+		)
+	add_custom_target(${target} ALL
+		DEPENDS ${file}
 		)
 endfunction()
 
@@ -27,25 +35,26 @@ TargetHelper(${PROJECT_NAME}_print_1_always out1.log)
 # Create some custom targets using the helper function above
 TargetHelper(${PROJECT_NAME}_print_2_in_subdirectory out2_subdir/out2.log)
 
-# Add another target without specifying the byproducts
-set(target ${PROJECT_NAME}_print_3_without_byproduct)
-set(file out3_without_byproduct.log)
+# This target build in subdir, but clean up properly
+set(target ${PROJECT_NAME}_print_3_and_clean_up_working_directory)
+set(dir out3_subdir)
+set(file out3_and_clean_up_working_directory.log)
+message("Target ${target} will produce file ${file} in dir ${dir}")
+set(note "Appending date to ${file} in ${dir}")
+add_custom_command(OUTPUT ${dir}/${file}
+	COMMAND ${RUN_ECHO} ${note}
+	COMMAND ${RUN_MKDIR} ${dir}
+	COMMAND echo "${dir}/${file}" >> ${dir}/${file}
+	COMMAND date >> ${dir}/${file}
+	COMMAND echo >> ${dir}/${file}
+	BYPRODUCTS ${dir}
+	COMMENT ${note}
+	)
 add_custom_target(${target} ALL
-	COMMAND date >> ${file}
-	COMMAND echo "From target ${target}" >> ${file}
-	COMMAND echo >> ${file}
-	COMMENT "Appending date to ${file} from ${target}, but wihout BYPRODUCTS"
+	DEPENDS ${dir}/${file}
 	)
 
-# This target build in subdir, but clean up properly
-set(target ${PROJECT_NAME}_print_4_and_clean_up_working_directory)
-set(dir out4_subdir)
-set(file out4_and_clean_up_working_directory.log)
-add_custom_target(${target} ALL
-	COMMAND date >> ${file}
-	COMMAND echo "From target ${target}" >> ${file}
-	COMMAND echo >> ${file}
-	BYPRODUCTS ${dir}/${file}
-	WORKING_DIRECTORY ${dir}
-	COMMENT "Appending date to ${file} from ${target} in WORKING_DIRECTORY ${dir}"
+# Only run the print_1_always target by default
+add_custom_target(${PROJECT_NAME} ALL
+	DEPENDS ${PROJECT_NAME}_print_1_always
 	)
