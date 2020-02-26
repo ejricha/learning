@@ -47,6 +47,26 @@ Configurations
 * Multi-config generators (Visual Studio, Xcode) have the CMAKE_BUILD_TYPE specified at compile time
 
 ---
+# Replacing bash/python scripts with CMake
+`cmake -E`
+
+Available commands:
+* `compare_files`
+* `copy`
+* `copy_directory`
+* `copy_if_different`
+* `echo`
+* `env`
+* `make_directory`
+* `md5sum`
+* `remove`
+* `remove_directory`
+* `rename`
+* `tar`
+* `time`
+* `touch`
+
+---
 # Best practices
 
 
