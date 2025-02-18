@@ -1,6 +1,6 @@
-use std::sync::{mpsc, Arc, Mutex};
-use std::thread;
-use std::time::Duration;
+use std::sync::Arc;
+use tokio::sync::{mpsc, Mutex};
+use tokio::time;
 
 struct Fork;
 
@@ -8,69 +8,69 @@ struct Philosopher {
     name: String,
     left_fork: Arc<Mutex<Fork>>,
     right_fork: Arc<Mutex<Fork>>,
-    thoughts: mpsc::SyncSender<String>,
+    thoughts: mpsc::Sender<String>,
 }
 
 impl Philosopher {
-    fn think(&self) {
+    async fn think(&self) {
         self.thoughts
             .send(format!("Eureka! {} has a new idea!", &self.name))
+            .await
             .unwrap();
     }
 
-    fn eat(&self) {
-        println!("{} is waiting for forks...", &self.name);
-        let _left_fork = self.left_fork.lock().unwrap();
-        let _right_fork = self.right_fork.lock().unwrap();
+    async fn eat(&self) {
+        println!("{} is waiting for forks...", &self.name);                                                                                                   
+        let _left_fork = self.left_fork.lock().await;
+        let _right_fork = self.right_fork.lock().await;
 
         println!("{} is eating...", &self.name);
-        thread::sleep(Duration::from_millis(10));
+        time::sleep(time::Duration::from_millis(10)).await;
     }
 }
 
-static PHILOSOPHERS: &[&str] = &["Socrates", "Hypatia", "Plato", "Aristotle", "Pythagoras"];
+static PHILOSOPHERS: &[&str] =
+    &["Socrates", "Hypatia", "Plato", "Aristotle", "Pythagoras"];
 
-fn main() {
-    let forks = (0..PHILOSOPHERS.len())
-        .map(|_| Arc::new(Mutex::new(Fork)))
-        .collect::<Vec<_>>();
+#[tokio::main]
+async fn main() {
+    // Create forks
+    let mut forks = vec![];
+    (0..PHILOSOPHERS.len()).for_each(|_| forks.push(Arc::new(Mutex::new(Fork))));
 
-    let (tx, rx) = mpsc::sync_channel(10);
-
-    for name in PHILOSOPHERS {
-        println!("My name is {name}")
-    }
-
-    for i in 0..forks.len() {
-        let tx = tx.clone();
-        let mut left_fork = Arc::clone(&forks[i]);
-        let mut right_fork = Arc::clone(&forks[(i + 1) % forks.len()]);
-
-        // To avoid a deadlock, we have to break the symmetry
-        // somewhere. This will swap the forks without deinitializing
-        // either of them.
-        if i == forks.len() - 1 {
-            std::mem::swap(&mut left_fork, &mut right_fork);
+    // Create philosophers
+    let (philosophers, mut rx) = {
+        let mut philosophers = vec![];
+        let (tx, rx) = mpsc::channel(10);
+        for (i, name) in PHILOSOPHERS.iter().enumerate() {
+            let mut left_fork = Arc::clone(&forks[i]);
+            let mut right_fork = Arc::clone(&forks[(i + 1) % PHILOSOPHERS.len()]);
+            if i == PHILOSOPHERS.len() - 1 {
+                std::mem::swap(&mut left_fork, &mut right_fork);
+            }
+            philosophers.push(Philosopher {
+                name: name.to_string(),
+                left_fork,
+                right_fork,
+                thoughts: tx.clone(),
+            });
         }
+        (philosophers, rx)
+        // tx is dropped here, so we don't need to explicitly drop it later
+    };
 
-        let philosopher = Philosopher {
-            name: PHILOSOPHERS[i].to_string(),
-            thoughts: tx,
-            left_fork,
-            right_fork,
-        };
-
-        thread::spawn(move || {
+    // Make them think and eat
+    for phil in philosophers {
+        tokio::spawn(async move {
             for _ in 0..100 {
-                philosopher.eat();
-                philosopher.think();
+                phil.think().await;
+                phil.eat().await;
             }
         });
     }
-    // Make each of them think and eat 100 times
 
-    drop(tx);
-    for thought in rx {
-        println!("{thought}");
+    // Output their thoughts
+    while let Some(thought) = rx.recv().await {
+        println!("Here is a thought: {thought}");
     }
 }
